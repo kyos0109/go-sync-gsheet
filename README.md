@@ -26,5 +26,5 @@ AWS:
 
 example docker run 
 ```
-docker run -d --name -v $(pwd)/config:/app sync-gsheet kyos0109/go-sync-gsheet
+docker run -d --name sync-gsheet -v $(pwd)/config:/app kyos0109/go-sync-gsheet
 ```
