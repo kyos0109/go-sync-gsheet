@@ -19,7 +19,7 @@ type sheetsService struct {
 func main() {
 	yamlConfig := GetConfig("config.yaml")
 
-	log.Println("Every " + yamlConfig.Setting.Crontab.String() + " Start Syncing...")
+	log.Println("Every " + yamlConfig.Setting.SyncTimeInterval.String() + " Start Syncing...")
 
 	for {
 		select {
@@ -49,9 +49,10 @@ func Go(yamlConfig *yamlConfig) {
 		values := [][]interface{}{}
 		sheetName := awsAuth.Account + "(" + awsAuth.Project + ")"
 		rangeData := sheetName + "!A:XX"
+		awsConsoleLink := "https://" + awsAuth.Account + ".signin.aws.amazon.com/console"
 
 		values = append(values, []interface{}{
-			sheetName, "latest update", time.Now().Format("2006-01-02 15:04:05"), "", "", "", "",
+			awsConsoleLink, "latest update", time.Now().Format("2006-01-02 15:04:05"), "", "", "", "",
 		})
 
 		values = append(values, []interface{}{

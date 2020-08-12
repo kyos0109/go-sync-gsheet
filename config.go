@@ -14,7 +14,7 @@ type yamlConfig struct {
 }
 
 type setting struct {
-	SyncTimeInterval time.Duration `yaml:"Crontab"`
+	SyncTimeInterval time.Duration `yaml:"SyncTimeInterval"`
 	SpreadsheetId    string        `yaml:"SpreadsheetId"`
 }
 
