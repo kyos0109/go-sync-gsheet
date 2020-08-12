@@ -45,3 +45,7 @@ func FindEC2TagName(tags []*ec2.Tag) *string {
 	log.Println("Not Found Tag Name, Other Tags: ", tags)
 	return nil
 }
+
+func AWSConsoleLink(awsAccount, sheetName *string) string {
+	return "=HYPERLINK(\"https://" + *awsAccount + ".signin.aws.amazon.com/console\",\"" + *sheetName + "\")"
+}

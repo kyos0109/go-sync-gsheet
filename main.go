@@ -49,15 +49,6 @@ func Go(yamlConfig *yamlConfig) {
 		values := [][]interface{}{}
 		sheetName := awsAuth.Account + "(" + awsAuth.Project + ")"
 		rangeData := sheetName + "!A:XX"
-		awsConsoleLink := "https://" + awsAuth.Account + ".signin.aws.amazon.com/console"
-
-		values = append(values, []interface{}{
-			awsConsoleLink, "latest update", time.Now().Format("2006-01-02 15:04:05"), "", "", "", "",
-		})
-
-		values = append(values, []interface{}{
-			"InstanceID", "Type", "TagName", "PrivateIpAddress", "PublicIpAddress", "State", "KeyName",
-		})
 
 		req := sheets.Request{
 			AddSheet: &sheets.AddSheetRequest{
@@ -73,6 +64,14 @@ func Go(yamlConfig *yamlConfig) {
 
 		ss.SendRequestService(rbb, ctx)
 		time.Sleep(1 * time.Second)
+
+		values = append(values, []interface{}{
+			AWSConsoleLink(&awsAuth.Account, &sheetName), "latest update", time.Now().Format("2006-01-02 15:04:05"), "", "", "", "",
+		})
+
+		values = append(values, []interface{}{
+			"InstanceID", "Type", "TagName", "PrivateIpAddress", "PublicIpAddress", "State", "KeyName",
+		})
 
 		for _, ec2Des := range GetEC2List(&awsAuth) {
 			for _, ins := range ec2Des.Instances {
