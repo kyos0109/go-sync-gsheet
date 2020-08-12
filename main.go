@@ -25,7 +25,7 @@ func main() {
 		select {
 		default:
 			Go(yamlConfig)
-			time.Sleep(yamlConfig.Setting.Crontab)
+			time.Sleep(yamlConfig.Setting.SyncTimeInterval)
 		}
 	}
 }
