@@ -11,7 +11,7 @@
 example config.yaml
 ```yaml
 Setting:
-   Crontab: 1m
+   SyncTimeInterval: 1m
    // https://docs.google.com/spreadsheets/d/{ID}/edit#gid=0
    SpreadsheetId: XXXXXXXXXXXXXXXXXXXXX
 AWS:
